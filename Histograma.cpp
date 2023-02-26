@@ -1,41 +1,41 @@
 #include <stdio.h>
 
 #define NUM_BINS 6
-#define min_meas 0
-#define max_meas 6
+#define MIN_VALUE 0
+#define MAX_VALUE 6
 
 int main() {
     int bin_count[NUM_BINS] = {0};
     int bin_maxes[NUM_BINS] = {0};
-    int bin_width = (max_meas - min_meas) / NUM_BINS;
-    int data_count;
-    int b, j;
+    int bin_width = (MAX_VALUE - MIN_VALUE) / NUM_BINS;
+    int num_values;
+    int i, j;
 
     // ler os valores
     printf("Entre com o número de valores: ");
-    scanf("%d", &data_count);
+    scanf("%d", &num_values);
 
-    int values[data_count];
+    int values[num_values];
     printf("Entre com os valores separados por espaços:\n");
-    for (b = 0; b < data_count; b++) {
-        scanf("%d", &values[b]);
+    for (i = 0; i < num_values; i++) {
+        scanf("%d", &values[i]);
     }
 
     // contar os valores em cada bin
-    for (b = 0; b < data_count; b++) {
-        int bin = (values[b] - min_meas) / bin_width;
+    for (i = 0; i < num_values; i++) {
+        int bin = (values[i] - MIN_VALUE) / bin_width;
         bin_count[bin]++;
     }
 
     // calcular o máximo de cada bin
-    for (b = 0; b < NUM_BINS; b++) {
-        bin_maxes[b] = min_meas + bin_width * (b + 1);
+    for (i = 0; i < NUM_BINS; i++) {
+        bin_maxes[i] = MIN_VALUE + bin_width * (i + 1);
     }
 
     // imprimir o histograma
-    for (b = 0; b < NUM_BINS; b++) {
-        printf("%2d-%2d | ", min_meas + b*bin_width, min_meas + (b+1)*bin_width - 1);
-        for (j = 0; j < bin_count[b]; j++) {
+    for (i = 0; i < NUM_BINS; i++) {
+        printf("%2d-%2d | ", MIN_VALUE + i*bin_width, MIN_VALUE + (i+1)*bin_width - 1);
+        for (j = 0; j < bin_count[i]; j++) {
             printf("*");
         }
         printf("\n");
