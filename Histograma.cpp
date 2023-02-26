@@ -8,21 +8,21 @@ int main() {
     int bin_count[NUM_BINS] = {0};
     int bin_maxes[NUM_BINS] = {0};
     int bin_width = (MAX_VALUE - MIN_VALUE) / NUM_BINS;
-    int num_values;
+    int data_count;
     int i, j;
 
     // ler os valores
     printf("Entre com o número de valores: ");
-    scanf("%d", &num_values);
+    scanf("%d", &data_count);
 
-    int values[num_values];
+    int values[data_count];
     printf("Entre com os valores separados por espaços:\n");
-    for (i = 0; i < num_values; i++) {
+    for (i = 0; i < data_count; i++) {
         scanf("%d", &values[i]);
     }
 
     // contar os valores em cada bin
-    for (i = 0; i < num_values; i++) {
+    for (i = 0; i < data_count; i++) {
         int bin = (values[i] - MIN_VALUE) / bin_width;
         bin_count[bin]++;
     }
